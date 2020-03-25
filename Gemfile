@@ -51,5 +51,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Mongoid
 gem 'mongoid'
 gem 'bson_ext'
+
+# Devise
 gem 'devise'
+
+# CanCanCan
 gem 'cancancan'
+
+# CarrierWave
+gem 'carrierwave', '~> 2.0'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'

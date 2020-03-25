@@ -5,4 +5,6 @@ class Post
   field :abstract, type: String
   field :content, type: String
   belongs_to :user
+
+  mount_uploader :thumbnail, AvatarUploader
 end

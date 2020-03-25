@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th></th>
       <th>Title</th>
       <th>Abstract</th>
       <th>Content</th>
@@ -15,6 +16,9 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
+        <td>
+          <%= image_tag(post.thumbnail.url, alt: File.basename(post.thumbnail.url), width: '100') %>
+        </td>
         <td><%= post.title %></td>
         <td><%= post.abstract %></td>
         <td><%= post.content %></td>

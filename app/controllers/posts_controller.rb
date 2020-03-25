@@ -1,3 +1,4 @@
+require 'json'
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
@@ -27,6 +28,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+
     @post = Post.new(post_params)
     @post.user = current_user
 
@@ -73,6 +75,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :abstract, :content)
+      params.require(:post).permit(:title, :abstract, :content, :thumbnail)
     end
 end
