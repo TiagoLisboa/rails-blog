@@ -7,6 +7,8 @@ class PostsController < ApplicationController
   def index
     @posts = []
     if can? :read, Post
+      @posts = current_user.posts
+    else
       @posts = Post.all
     end
   end
