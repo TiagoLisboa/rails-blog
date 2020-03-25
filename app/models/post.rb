@@ -4,4 +4,5 @@ class Post
   field :title, type: String
   field :abstract, type: String
   field :content, type: String
+  belongs_to :user
 end
