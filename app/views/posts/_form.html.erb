@@ -1,4 +1,9 @@
-<%= form_with(model: post, local: true) do |form| %>
+<%= form_with(model: post, local: true, html: { id: 'form' }) do |form| %>
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+  <!-- Include the Quill library -->
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -11,32 +16,54 @@
     </div>
   <% end %>
 
-  <div class="field">
+
+  <div class="form-group">
     <%= form.label :thumbnail %>
-    <%= form.file_field :thumbnail %>
+    <%= form.file_field :thumbnail, required: true, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="form-group">
+    <%= form.label :title, 'Título' %>
+    <%= form.text_field :title, required: true, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :abstract %>
-    <%= form.text_field :abstract %>
+  <div class="form-group">
+    <%= form.label :abstract, 'Resumo' %>
+    <%= form.text_area :abstract, required: true, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
+  <div class="form-group">
+    <%= form.label :content, 'Conteúdo' %>
+    <%= form.hidden_field :content, required: true, class: "form-control" %>
+    <!-- Create the editor container -->
+    <div id="editor">
+      <p>Hello World!</p>
+      <p>Some initial <strong>bold</strong> text</p>
+      <p><br></p>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :tags %>
-    <%= form.text_field :tags %>
+    <%= form.text_field :tags, class: "form-control"%>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
+
+
+  <!-- Initialize Quill editor -->
+  <script>
+    var form = document.querySelector('#form');
+    var quill = new Quill('#editor', {
+      theme: 'snow'
+    });
+
+    form.onsubmit = function (e) {
+      var postContentInput = document.querySelector('#post_content');
+      postContentInput.value = quill.root.innerHTML;
+    }
+  </script>
+
 <% end %>

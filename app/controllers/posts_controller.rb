@@ -28,9 +28,9 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-
-    @post = Post.new(post_params)
+    @post = Post.new(post_params.except(:tags))
     @post.user = current_user
+    @post.tags = post_params[:tags].split(',').map{ |tag| tag.strip }
 
     respond_to do |format|
       if @post.save

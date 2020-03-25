@@ -12,7 +12,7 @@ class Post
   mount_uploader :thumbnail, AvatarUploader
 
   def self.all_tags()
-    Post.all.map { |post| post.tags }.reduce(:concat).to_set
+    Post.all.count > 0? Post.all.map { |post| post.tags }.reduce(:concat).to_set : []
   end
 
 end
