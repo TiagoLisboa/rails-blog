@@ -63,5 +63,9 @@ gem 'carrierwave', '~> 2.0'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
 
-# Tags
-gem 'mongoid_taggable'
+# Bootstrap
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'bootstrap', '~> 4.4.1'
+gem 'jquery-rails'
+
+

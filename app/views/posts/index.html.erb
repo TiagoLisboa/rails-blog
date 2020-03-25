@@ -2,33 +2,26 @@
 
 <h1>Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Title</th>
-      <th>Abstract</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td>
-          <%= image_tag(post.thumbnail.url, alt: File.basename(post.thumbnail.url), width: '100') %>
-        </td>
-        <td><%= post.title %></td>
-        <td><%= post.abstract %></td>
-        <td><%= post.content %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @posts.each do |post| %>
+  <div class="card mb-4">
+    <div class="img-holder"><%= image_tag(post.thumbnail.url, alt: File.basename(post.thumbnail.url), class: 'card-img-top') %></div>
+    <div class="card-body">
+      <h2 class="card-title"><%= post.title %></h2>
+      <p class="card-text"><%= post.abstract %></p>
+      <%= link_to 'Veja Mais', post, class: 'btn btn-primary' %>
+      <div>
+        <% post.tags.each do |tag| %>
+          <a href="#"><%= tag %></a>
+        <% end %>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      Postado em <%= post.created_at %>
+      <a href="#"><%= post.user.name %></a>
+    </div>
+  </div>
+<% end %>
 
 <br>
 
