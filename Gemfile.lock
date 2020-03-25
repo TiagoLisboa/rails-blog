@@ -139,6 +139,9 @@ GEM
     mongoid (7.1.0)
       activemodel (>= 5.1, < 6.1)
       mongo (>= 2.7.0, < 3.0.0)
+    mongoid_taggable (1.1.1)
+      mongoid (>= 3)
+      rake
     msgpack (1.3.3)
     nio4r (2.5.2)
     nokogiri (1.10.9)
@@ -260,6 +263,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   mongoid
   mongoid-grid_fs!
+  mongoid_taggable
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.2)
   sass-rails (>= 6)

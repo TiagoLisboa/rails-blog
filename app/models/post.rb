@@ -1,9 +1,11 @@
 class Post
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Taggable
   field :title, type: String
   field :abstract, type: String
   field :content, type: String
+
   belongs_to :user
 
   mount_uploader :thumbnail, AvatarUploader

@@ -62,3 +62,6 @@ gem 'cancancan'
 gem 'carrierwave', '~> 2.0'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
+
+# Tags
+gem 'mongoid_taggable'
