@@ -5,6 +5,9 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # Custom fields
+  field :name,               type: String, default: ""
+
   ## Database authenticatable
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
