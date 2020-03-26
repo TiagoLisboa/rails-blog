@@ -52,10 +52,10 @@
 <% end %>
 
  <script>
-    $('#post_thumbnail').on('change',function(){
+    document.querySelector('#post_thumbnail').onchange = function(){
         //get the file name
-        var fileName = $(this).val().replace(/^.*[\\\/]/, '');
+        var fileName = document.querySelector('#post_thumbnail').value.replace(/^.*[\\\/]/, '');
         //replace the "Choose a file" label
-        $(this).next('.custom-file-label').html(fileName);
-    })
+        document.querySelector('.custom-file-label').innerHTML = fileName;
+    }
 </script>
