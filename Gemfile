@@ -67,3 +67,6 @@ gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'bootstrap', '~> 4.4.1'
 
+# Kaminari
+gem 'kaminari-mongoid'
+gem 'kaminari-actionview'

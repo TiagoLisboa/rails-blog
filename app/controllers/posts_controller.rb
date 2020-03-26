@@ -20,6 +20,7 @@ class PostsController < ApplicationController
       @posts = @posts.where(:title => /#{search}/i)
     end
     @posts = @posts.order_by(created_at: :desc)
+    @posts = @posts.page(params[:page])
   end
 
   # GET /posts/1
