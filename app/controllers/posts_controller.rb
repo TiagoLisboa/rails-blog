@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = []
-    if can? :read, Post
+    if user_signed_in?
       @posts = current_user.posts
     else
       @posts = Post.all
@@ -20,11 +20,18 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    if can? :create, Post
+      @post = Post.new
+    else
+      redirect_to action: "index"
+    end
   end
 
   # GET /posts/1/edit
   def edit
+    if cannot? :update, @post
+      redirect_to action: "index"
+    end
   end
 
   # POST /posts
@@ -62,10 +69,14 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-      format.json { head :no_content }
+    if can? :destroy, @post
+      @post.destroy
+      respond_to do |format|
+        format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to action: "index"
     end
   end
 

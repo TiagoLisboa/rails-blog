@@ -1,19 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
+
+<!-- Title -->
+<h1 class="mt-4"><%= @post.title %></h1>
+
+<!-- Author -->
+<p class="lead">
+  escrito por
+  <a href="#"><%= @post.user.name %></a>
 </p>
 
-<p>
-  <strong>Abstract:</strong>
-  <%= @post.abstract %>
-</p>
+<hr>
 
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
+<!-- Date/Time -->
+<p>postado em <%= @post.created_at %></p>
+
+<hr>
+
+<!-- Preview Image -->
+<div class="img-holder-post"><%= image_tag(@post.thumbnail.url, alt: File.basename(@post.thumbnail.url), class: 'card-smg-top') %></div>
+<hr>
+
+<!-- Post Content -->
+<%= raw sanitize @post.content, tags: %w(strong em a p br u), attributes: %w(href) %>
+<hr>
+
+
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

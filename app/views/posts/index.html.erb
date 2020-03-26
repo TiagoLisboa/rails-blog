@@ -2,6 +2,11 @@
 
 <h1>Posts</h1>
 
+<br />
+<% if can? :create, Post %>
+  <%= link_to 'New Post', new_post_path %>
+<% end %>
+<hr />
 
 <% @posts.each do |post| %>
   <div class="card mb-4">
@@ -11,6 +16,9 @@
       <p class="card-text"><%= post.abstract %></p>
       <%= link_to 'Veja Mais', post, class: 'btn btn-primary' %>
       <div>
+        <hr />
+       
+        <strong>Tags:</strong>
         <% post.tags.each do |tag| %>
           <a href="#"><%= tag %></a>
         <% end %>
@@ -23,6 +31,3 @@
   </div>
 <% end %>
 
-<br>
-
-<%= link_to 'New Post', new_post_path %>
