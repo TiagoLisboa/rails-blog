@@ -5,9 +5,6 @@
       <p id="notice"><%= notice %></p>
     <% end %>
 
-    <% if can? :edit, @post %>
-      <%= link_to 'Editar', edit_post_path(@post) %> | 
-    <% end %>
       
     <%= link_to 'Voltar', posts_path %>
 

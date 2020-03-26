@@ -39,9 +39,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    if cannot? :update, @post
-      redirect_to action: "index"
-    end
+    redirect_to action: "index"
   end
 
   # POST /posts
