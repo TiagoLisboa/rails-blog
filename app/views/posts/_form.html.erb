@@ -36,7 +36,7 @@
     <%= form.hidden_field :content, required: true, class: "form-control" %>
     <!-- Create the editor container -->
     <div id="editor">
-      <%= raw sanitize @post.content, tags: %w(strong em a p br u), attributes: %w(href) %> 
+      <%= raw sanitize @post.content, tags: %w(strong em a p br u ul ol h1 h2 h3), attributes: %w(href) %> 
     </div>
   </div>
 

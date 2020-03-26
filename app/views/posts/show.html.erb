@@ -43,7 +43,7 @@
 
     <div class="post-content">
       <!-- Post Content -->
-      <%= raw sanitize @post.content, tags: %w(strong em a p br u), attributes: %w(href) %>
+      <%= raw sanitize @post.content, tags: %w(strong em a p br u ul ol h1 h2 h3), attributes: %w(href) %>
     </div>
     <hr>
   </div>
