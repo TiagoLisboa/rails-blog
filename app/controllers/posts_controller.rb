@@ -11,6 +11,10 @@ class PostsController < ApplicationController
     else
       @posts = Post.all
     end
+    if params[:tag]
+      tag = params[:tag]
+      @posts = @posts.where(:tags =>  /^#{tag}$/i)
+    end
   end
 
   # GET /posts/1
