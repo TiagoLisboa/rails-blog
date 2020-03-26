@@ -19,6 +19,7 @@ class PostsController < ApplicationController
       search = params[:search]
       @posts = @posts.where(:title => /#{search}/i)
     end
+    @posts = @posts.order_by(created_at: :desc)
   end
 
   # GET /posts/1
