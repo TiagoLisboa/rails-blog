@@ -1,8 +1,7 @@
-<%= form_with(model: post, local: true, html: { id: 'form' }) do |form| %>
-  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<%= stylesheet_link_tag "quill.snow", media: "all" %>
+<%= javascript_include_tag "quill.min" %>
 
-  <!-- Include the Quill library -->
-  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<%= form_with(model: post, local: true, html: { id: 'form' }) do |form| %>
 
   <% if post.errors.any? %>
     <div id="error_explanation">
@@ -49,7 +48,7 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Salvar Post", class: 'btn btn-primary' %>
   </div>
 
 

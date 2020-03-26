@@ -9,3 +9,13 @@
 .post-content {
   margin: 42px 80px;
 }
+
+.align-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.align-left * {
+  padding: 0 10px 20px;
+}
