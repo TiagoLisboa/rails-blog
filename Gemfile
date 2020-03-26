@@ -66,6 +66,4 @@ gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
 # Bootstrap
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'bootstrap', '~> 4.4.1'
-gem 'jquery-rails'
-
 

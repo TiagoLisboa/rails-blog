@@ -1,5 +1,4 @@
-<%= stylesheet_link_tag "quill.snow", media: "all" %>
-<%= javascript_include_tag "quill.min" %>
+<%= javascript_pack_tag 'application' %>
 
 <%= form_with(model: post, local: true, html: { id: 'form' }) do |form| %>
 
@@ -51,18 +50,6 @@
     <%= form.submit "Salvar Post", class: 'btn btn-primary' %>
   </div>
 
-
-  <!-- Initialize Quill editor -->
-  <script>
-    var form = document.querySelector('#form');
-    var quill = new Quill('#editor', {
-      theme: 'snow'
-    });
-
-    form.onsubmit = function (e) {
-      var postContentInput = document.querySelector('#post_content');
-      postContentInput.value = quill.root.innerHTML;
-    }
-  </script>
-
 <% end %>
+
+
