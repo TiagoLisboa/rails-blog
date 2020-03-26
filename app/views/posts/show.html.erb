@@ -1,31 +1,41 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
 
-
-<!-- Title -->
-<h1 class="mt-4"><%= @post.title %></h1>
-
-<!-- Author -->
-<p class="lead">
-  escrito por
-  <a href="#"><%= @post.user.name %></a>
-</p>
-
-<hr>
-
-<!-- Date/Time -->
-<p>postado em <%= @post.created_at %></p>
-
-<hr>
+<% if can? :edit, @post %>
+  <%= link_to 'Edit', edit_post_path(@post) %> 
+<% end %>
+<% if can? :destroy, @post %>
+  |
+  <%= link_to 'Back', posts_path %>
+<% end %>
 
 <!-- Preview Image -->
 <div class="img-holder-post"><%= image_tag(@post.thumbnail.url, alt: File.basename(@post.thumbnail.url), class: 'card-smg-top') %></div>
 <hr>
 
-<!-- Post Content -->
-<%= raw sanitize @post.content, tags: %w(strong em a p br u), attributes: %w(href) %>
+<div class="text-center">
+
+  <!-- Title -->
+  <h1 class="mt-4"><%= @post.title %></h1>
+
+  <!-- Author -->
+  <p class="lead">
+    escrito por
+    <a href="#"><%= @post.user.name %></a>
+  </p>
+
+
+  <!-- Date/Time -->
+  <p>postado em <%= @post.created_at %></p>
+
+</div>
+
 <hr>
 
+<div class="post-content">
+  <!-- Post Content -->
+  <%= raw sanitize @post.content, tags: %w(strong em a p br u), attributes: %w(href) %>
+  <hr>
+</div>
 
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>

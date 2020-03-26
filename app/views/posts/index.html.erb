@@ -8,26 +8,78 @@
 <% end %>
 <hr />
 
-<% @posts.each do |post| %>
-  <div class="card mb-4">
-    <div class="img-holder"><%= image_tag(post.thumbnail.url, alt: File.basename(post.thumbnail.url), class: 'card-img-top') %></div>
-    <div class="card-body">
-      <h2 class="card-title"><%= post.title %></h2>
-      <p class="card-text"><%= post.abstract %></p>
-      <%= link_to 'Veja Mais', post, class: 'btn btn-primary' %>
-      <div>
-        <hr />
-       
-        <strong>Tags:</strong>
-        <% post.tags.each do |tag| %>
-          <a href="#"><%= tag %></a>
-        <% end %>
+<div class="row">
+  <div class="col-md-8">
+    <% @posts.each do |post| %>
+    
+      <div class="card mb-4">
+        <div class="img-holder"><%= image_tag(post.thumbnail.url, alt: File.basename(post.thumbnail.url), class: 'card-img-top') %></div>
+        <div class="card-body">
+          <h2 class="card-title"><%= post.title %></h2>
+          <p class="card-text"><%= post.abstract %></p>
+          <%= link_to 'Veja Mais', post, class: 'btn btn-primary' %>
+          <div>
+            <hr />
+           
+            <strong>Tags:</strong>
+            <% post.tags.each do |tag| %>
+              <a href="#"><%= tag %></a>
+            <% end %>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          Postado em <%= post.created_at %>
+          <a href="#"><%= post.user.name %></a>
+        </div>
+      </div>
+
+
+
+    <% end %>
+
+  </div>  
+
+  <div class="col-md-4">
+
+    <!-- Search Widget -->
+    <div class="card my-4">
+      <h5 class="card-header">Search</h5>
+      <div class="card-body">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search for...">
+          <span class="input-group-btn">
+            <button class="btn btn-secondary" type="button">Go!</button>
+          </span>
+        </div>
       </div>
     </div>
-    <div class="card-footer text-muted">
-      Postado em <%= post.created_at %>
-      <a href="#"><%= post.user.name %></a>
-    </div>
-  </div>
-<% end %>
 
+    <!-- Categories Widget -->
+    <div class="card my-4">
+      <h5 class="card-header">Categories</h5>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <ul class="list-unstyled tag-list">
+              <% Post.all_tags.each do |tag| %>
+                <li>
+                  <a href="#"><%= tag %></a>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Side Widget -->
+    <div class="card my-4">
+      <h5 class="card-header">Side Widget</h5>
+      <div class="card-body">
+        You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+      </div>
+    </div>
+
+  </div>
+
+</div>
