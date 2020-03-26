@@ -15,6 +15,10 @@ class PostsController < ApplicationController
       tag = params[:tag]
       @posts = @posts.where(:tags =>  /^#{tag}$/i)
     end
+    if params[:search]
+      search = params[:search]
+      @posts = @posts.where(:title => /#{search}/i)
+    end
   end
 
   # GET /posts/1
